@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    
+    float a,h,r;
+    cout<<"Escriba la base del rectangulo: ";
+    cin>> a;
+    cout<<"Escriba la altura del rectangulo: ";
+    cin>> h;
+    r=a*h;
+    cout<<"El area del rectangulo es: "<<r;
+    return 0;
+}
