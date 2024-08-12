@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    
+    float a,b,c,Area,Semiperimetro;
+    cout<<"Escriba el primer lado del triangulo: ";
+    cin>>a;
+    cout<<"Escriba el segundo lado del triangulo: ";
+    cin>>b;
+    cout<<"Escriba el tercer lado del triangulo: ";
+    cin>>c;
+    Semiperimetro = (a+b+c)/2;
+    Area = sqrt(Semiperimetro*(Semiperimetro-a)*(Semiperimetro-b)*(Semiperimetro-c));
+    cout<<"El area del triangulo es: "<<Area;
+    return 0;
+}
