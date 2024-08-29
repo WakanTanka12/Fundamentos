@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int suma = 0, num;
+    
+    cout << "Ingrese el primer numero: ";
+    cin >> num;
+    suma += num;
+    cout << "Ingrese el segundo numero: ";
+    cin >> num;
+    suma += num;
+    cout << "Ingrese el tercer numero: ";
+    cin >> num;
+    suma += num;
+    cout << "Ingrese el cuarto numero: ";
+    cin >> num;
+    suma += num;
+    cout << "Ingrese el quinto numero: ";
+    cin >> num;
+    suma += num;
+    cout << "El promedio de los cinco numeros es: " << suma/5;
+    return 0;
+}
