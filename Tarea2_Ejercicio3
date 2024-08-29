@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    // Declaracion de variables
+    int sumaparcial, promedio, i;
+    sumaparcial = 0;
+    i = 1;
+    
+    // Input de parciales
+    while (i <= 4) {
+        cout << "Ingrese la nota del parcial: ";
+        int nota;
+        cin >> nota;
+        if (nota < 0 || nota > 10) {
+            cout << "Por favor ingrese una nota entre 0 y 10";
+            return 1;
+        }
+        sumaparcial += nota;
+        i += 1;
+    }  
+    
+    // Calculo de promedio
+    promedio = sumaparcial/4;
+    
+    cout << "Su promedio es " << promedio;
+    // Asignacion de mensajes
+    
+    if (promedio >= 6 && promedio <=10) {
+        cout << "          Aprobado";
+    } else if (promedio >= 5 && promedio <= 6) {
+        cout << "          Derecho a extraordinario";
+    } else if (promedio >= 2 && promedio <= 5) {
+        cout << "          Derecho a título";
+    } else {
+        cout << "          Sin derecho a acreditar";
+    }
+    
+    return 0;
+}
