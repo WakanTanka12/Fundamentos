@@ -1,0 +1,264 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int opcion, x, y, sumaparcial = 0, promedio, i = 0, nota;
+    double r, area, circunferencia;
+    do {
+        cout << "MENU" << endl;
+        cout << "====" << endl;
+        cout << "1. Longitud y área de la circunferencia" << endl;
+        cout << "2. Cálculo de edad en días" << endl;
+        cout << "3. Calculo de nota" << endl;
+        cout << "0. Salir" << endl;
+        
+        cout << "Ingrese la opción que desea: " << endl;
+        cin >> opcion;
+        
+        switch (opcion) {
+            case 1: {
+                    cout << "Ingrese el radio" << endl;
+                    cin >> r;
+                    cout << "El área del círculo es: " << 3.141516 * r * r;
+                    cout << "L longitud es: " << 2 * 3.141516 * r;
+                    break;
+            }
+            case 2: {
+                    // Input fecha nacimiento
+                    int dia, mes, año;
+                    cout << "Ingrese el dia de su nacimiento: ";
+                    cin >> dia;
+                    cout << endl << "Ingrese el mes de su nacimiento: ";
+                    cin >> mes;
+                    cout << endl << "Ingrese el año de su nacimiento: ";
+                    cin >> año;
+                    
+                    // Validacion fecha nacimiento
+                    if (dia < 1 || dia > 31) {          // Si el dia introducido no está entre 1 y 31 es invalido
+                        cout << "Fecha inválida";
+                        return 1;
+                    }
+                    
+                    if (mes < 1 || mes > 12) {         // Si el mes no está entre 1 y 12 es inválido
+                        cout << "Fecha inválida";
+                        return 1;
+                        
+                    } else if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30 ) {  // Si es mes de 30 dias
+                        cout << "Fecha inválida";                                               // y se ingresa un numero          
+                        return 1;                                                               // mayor a 30 es invalido
+                        
+                    } else if (mes == 2) {                                             // Si es febrero
+                        if ((año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)) {    // Si es bisiesto
+                            if (dia > 29) {                                            // Si el dia ingresado es mayor a 29 es invalido
+                                cout << "Fecha inválida";
+                                return 1;
+                            }
+                        } else {                                                       // Si no es bisiesto
+                            if (dia > 28) {                                            // Si el dia ingresado es mayor a 28 es invalido
+                                cout << "Fecha inválida";
+                                return 1;
+                            }
+                        }
+                    }
+                    
+                    // Input fecha actual
+                    int diahoy, meshoy, añohoy;
+                    cout <<  endl << "Ingrese el dia actual: ";
+                    cin >> diahoy;
+                    cout << endl << "Ingrese el mes actual: ";
+                    cin >> meshoy;
+                    cout << endl << "Ingrese el año actual: ";
+                    cin >> añohoy;
+                    
+                    // Validacion fecha actual
+                    if (diahoy < 1 || diahoy > 31) {          // Si el dia introducido no está entre 1 y 31 es invalido
+                        cout << "Fecha inválida";
+                        return 1;
+                    }
+                    
+                    if (meshoy < 1 || meshoy > 12) {         // Si el mes no está entre 1 y 12 es inválido
+                        cout << "Fecha inválida";
+                        return 1;
+                        
+                    } else if ((meshoy == 4 || meshoy == 6 || meshoy == 9 || meshoy == 11) && diahoy > 30 ) {  // Si es mes de 30 dias
+                        cout << "Fecha inválida";                                               // y se ingresa un numero          
+                        return 1;                                                               // mayor a 30 es invalido
+                        
+                    } else if (meshoy == 2) {                                             // Si es febrero
+                        if ((añohoy % 4 == 0 && añohoy % 100 != 0) || (añohoy % 400 == 0)) {    // Si es bisiesto
+                            if (diahoy > 29) {                                            // Si el dia ingresado es mayor a 29 es invalido
+                                cout << "Fecha inválida";
+                                return 1;
+                            }
+                        } else {                                                       // Si no es bisiesto
+                            if (diahoy > 28) {                                            // Si el dia ingresado es mayor a 28 es invalido
+                                cout << "Fecha inválida";
+                                return 1;
+                            }
+                        }
+                    }
+                    
+                    // Validación extra
+                    if (añohoy < año) {                                    // Si el año actual es menor que el de nacimiento
+                        cout << "Fecha inválida";
+                        return 1;
+                    }
+                    if (año == añohoy && meshoy < mes) {                  // Si estando en el mismo año, el mes actual es menor
+                        cout << "Fecha inválida";                         // que el de nacimiento
+                        return 1;
+                    }
+                    if (año == añohoy && mes == meshoy && diahoy < dia) {   // Si estando en el mismo año y mes el dia actual es menor
+                        cout << "Fecha inválida";                           // que el de nacimiento
+                        return 1;
+                    }
+                    // Calculo de dias
+                    
+                    // dias totales = dias restantes en el mes de nacimiento + meses completos hasta que acabe el año +
+                    // años completos hasta uno anterior del actual + meses completos hasta uno anterior del actual + dias actuales
+                    
+                    int i, diastotales = 0, diasnacimiento = 0, mesesendiasnacimiento = 0, añosendias = 0, mesesendiashoy = 0;
+                    
+                    // Calculo de los dias en el mes de nacimiento
+                    if (mes == meshoy && año == añohoy) {
+                        diasnacimiento = diahoy - dia;
+                    } else {
+                        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                            diasnacimiento = 31 - dia;
+                            
+                        } else if (mes == 2) {                              
+                            if ((añohoy % 4 == 0 && añohoy % 100 != 0) || (añohoy % 400 == 0)) {
+                                diasnacimiento = 29 - dia;
+                                
+                            } else {           
+                                diasnacimiento = 28 - dia;                        
+                            }
+                        } else {
+                            diasnacimiento = 30 - dia;
+                        }
+                    }
+                    // Calculo de los dias hasta fin de año de nacimento
+                    if (año == añohoy) {       // Si es en el mismo año
+                        while (mes + 1 < meshoy) {
+                            if (mes + 1 == 1 || mes + 1 == 3 || mes + 1 == 5 || mes + 1 == 7 || mes + 1 == 8 || mes + 1 == 10 || mes + 1 == 12) {
+                            mesesendiasnacimiento += 31;
+                            
+                            } else if (mes + 1 == 2) {                              
+                                if ((año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)) {
+                                    mesesendiasnacimiento += 29;
+                                    
+                                } else {
+                                    mesesendiasnacimiento += 28;
+                                }
+                                
+                            } else if (mes + 1 == 4 || mes + 1 == 6 || mes + 1 == 9 || mes + 1 == 11) {
+                                mesesendiasnacimiento += 30;
+                            }
+                            
+                            mes ++;
+                        }
+                    } else {
+                        while (mes + 1 <= 12) {                     //Un mes despues del de nacimiento
+                            if (mes + 1 == 1 || mes + 1 == 3 || mes + 1 == 5 || mes + 1 == 7 || mes + 1 == 8 || mes + 1 == 10 || mes + 1 == 12) {
+                            mesesendiasnacimiento += 31;
+                            
+                            } else if (mes + 1 == 2) {                              
+                                if ((año % 4 == 0 && año % 100 != 0) || (año % 400 == 0)) {
+                                    mesesendiasnacimiento += 29;
+                                    
+                                } else {
+                                    mesesendiasnacimiento += 28;
+                                }
+                                
+                            } else if (mes + 1 == 4 || mes + 1 == 6 || mes + 1 == 9 || mes + 1 == 11) {
+                                mesesendiasnacimiento += 30;
+                            }
+                            
+                            mes ++;
+                        }
+                    }
+                    
+                    
+                    // Calculo de los años hasta antes del actual
+                    while (año + 1 < añohoy) {                         //Un año antes del actual
+                        if (((año + 1) % 4 == 0 && (año + 1) % 100 != 0) || ((año + 1)% 400 == 0)) {
+                            añosendias += 366;
+                        } else {
+                            añosendias += 365;
+                        }
+                        año ++;
+                    }
+                    
+                    // Calculo de los meses del año actual hasta uno antes del mes actual
+                    i = 1;
+                    if (!(año == añohoy)) {
+                        while (i <= meshoy - 1 ) {
+                            if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
+                            mesesendiashoy += 31;
+                            
+                            } else if (i == 2) {                              
+                                if ((añohoy % 4 == 0 && añohoy % 100 != 0) || (añohoy % 400 == 0)) {
+                                    mesesendiashoy += 29;
+                                    
+                                } else {
+                                    mesesendiashoy += 28;
+                                }
+                                
+                            } else if (i == 4 || i == 6 || i == 9 || i == 11) {
+                                mesesendiashoy += 30;
+                            }
+                
+                            i ++;
+                        }
+                    }
+                    
+                    // Formula total
+                    if (mes == meshoy) {
+                        diastotales = diasnacimiento + mesesendiasnacimiento + añosendias + mesesendiashoy;
+                    } else {
+                        diastotales = diasnacimiento + mesesendiasnacimiento + añosendias + mesesendiashoy + diahoy;
+                    }
+                    cout << endl << "Usted tiene " << diastotales << " días de edad.";
+                    
+                    break;
+            }
+            case 3: {
+                    
+                    while (i <= 4) {
+                        cout << "Ingrese la nota del parcial: ";
+                        cin >> nota;
+                        if (nota < 0 || nota > 10) {
+                            cout << "Por favor ingrese una nota entre 0 y 10";
+                            return 1;
+                        }
+                        sumaparcial += nota;
+                        i += 1;
+                    }  
+                    
+                    promedio = sumaparcial/4;
+                    
+                    cout << "Su promedio es " << promedio;
+                    
+                    if (promedio >= 6 && promedio <=10) {
+                        cout << "          Aprobado" << endl;
+                    } else if (promedio >= 5 && promedio <= 6) {
+                        cout << "          Derecho a extraordinario" << endl;
+                    } else if (promedio >= 2 && promedio <= 5) {
+                        cout << "          Derecho a título" << endl;
+                    } else {
+                        cout << "          Sin derecho a acreditar" << endl;
+                    }
+                    break;
+            }
+            case 0: {
+                cout << "Salir";
+                break;
+            }
+            default: {
+                cout << "Opción inválida" << endl;
+            }
+        } 
+    } while (opcion != 0);
+    return 0;
+}
