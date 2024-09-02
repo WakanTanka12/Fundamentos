@@ -14,10 +14,11 @@ int main () {
     cin>>pagoporhora;
     int salario;
     salario = horas*pagoporhora;
-    if(salario>8272)
+    if(salario>8272) {
         cout<<"Su salario es: "<<salario-salario*0.13;
-    else
+    }
+    else {
         cout<<"Su salario es: "<<salario;
-    
+    }
     return 0;
 }
