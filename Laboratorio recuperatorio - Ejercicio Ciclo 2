@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main() {
+    int n, a = 1, b = 1, suma = 0;
+    cout << "N-ésimo término de Fibonacci" << endl;
+    cout << "Ingrese N: ";
+    cin >> n;
+
+    if (n == 0) {
+        cout << "El N-ésimo término es 1";
+    }
+
+    if (n == 1) {
+        cout << "El N-ésimo término es 1";
+    }
+
+    for (int i = 2 ; i <= n ; i++) {
+        suma = a + b;
+        a = b;
+        b = suma;
+    }
+    cout << "El N-ésimo término es: " << suma;
+   return 0;
+}
