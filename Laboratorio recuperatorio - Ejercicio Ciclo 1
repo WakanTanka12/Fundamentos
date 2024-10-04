@@ -1,0 +1,15 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main() {
+    int n, suma;
+    cout << "Suma de la forma S = 1 - 2 + 3 - 4 + 5 - ..... +/- N" << endl;
+    cout << "Ingrese N: ";
+    cin >> n;
+    for (int i = 1 ; i <= n ; i++) {
+        suma += i * pow(-1 , i - 1);
+    }
+    cout << "La suma es: " << suma;
+    return 0;
+}
