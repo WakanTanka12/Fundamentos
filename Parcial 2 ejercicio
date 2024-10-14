@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    float ventas, total, comision;
+
+    cout << "Ingrese el monto de ventas que hubo en el mes: ";
+    cin >> ventas;
+    
+    while (ventas < 0) {
+        cout << "Por favor ingrese un monto de ventas mayor a 0: ";
+        cin >> ventas;
+    }
+
+    if (ventas < 10000)
+        comision = 1;
+    else if (ventas >= 10000 && ventas <= 50000)
+        comision = 0.05;
+    else
+        comision = 0.08;
+
+    total = ventas * (1 - comision);
+    cout << "El valor neto de las ventas aplicando la comision correspondiente es de: " << total;
+
+    return 0;
+}
