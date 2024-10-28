@@ -1,0 +1,74 @@
+#include <iostream>
+#define MAX 100
+
+using namespace std;
+
+void cargar(int vec[]);
+void mostrar(int vec[]);
+void burbuja(int vec[]);
+int mayor(int vec[]);
+int menor(int vec[]);
+float promedio(int vec[]);
+void unir(int vec[], int vec2[]);
+void sumar(int vec[], int vec2[]);
+
+int main() {
+	
+	int A[MAX], B[MAX], C[MAX], opcion, opcionvector;
+	do {
+		cout << "\t MENU" << endl;
+		cout << "1. Cargar vector" << endl;
+		cout << "2. Mostrar vector" << endl;
+		cout << "3. Clasificar vector" << endl;
+		cout << "4. Hallar el numero mayor de un vector" << endl;
+		cout << "5. Hallar el numero menor de un vector" << endl;
+		cout << "6. Hallar el promedio de los elementos del vector" << endl;
+		cout << "7. Unir dos vectores" << endl;
+		cout << "8. Sumar dos vectores" << endl;
+		cout << "0. Salir" << endl;
+		cin >> opcion;
+		cout << endl;
+
+		switch (opcion) {
+		case 1: 
+			cout << "Elija que vector quiere cargar (A, B, C): ";
+			cin >> opcionvector;
+
+			if (opcionvector == 1)
+				cargar(A);
+			else if (opcionvector == 2)
+				cargar(B);
+			else if (opcionvector == 3)
+				cargar(C);
+
+			break;
+		case 2: 
+			cout << "Elija que vector quiere mostrar (A, B, C): ";
+			cin >> opcionvector;
+
+			if (opcionvector == 1)
+				mostrar(A);
+			else if (opcionvector == 2)
+				mostrar(B);
+			else if (opcionvector == 3)
+				mostrar(C);
+
+			break;
+
+		case 3:
+			cout << "Elija que vector quiere clasificar (A, B, C): ";
+			cin >> opcionvector;
+
+			if (opcionvector == 1)
+				burbuja(A);
+			else if (opcionvector == 2)
+				burbuja(B);
+			else if (opcionvector == 3)
+				burbuja(C);
+
+			break;
+		}
+
+
+	} while (opcion != 0);
+}
