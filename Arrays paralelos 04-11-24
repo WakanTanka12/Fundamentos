@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+
+#define MAX 100
+
+using namespace std;
+
+void cargar(string nombre[], int tel[], int n);
+void mostrar(string nombre[], int tel[], int n);
+void burbuja(string nombre[], int tel[], int n);
+
+
+int main()
+{
+	int n, tel[MAX];
+	string nombre[MAX];
+
+	cout << "Ingrese el tamano del array: ";
+	cin >> n;
+	while (n < 1 || n > MAX) {
+		cout << "Ingrese un dato valido: ";
+		cin >> n;
+	}
+
+	cargar(nombre, tel, n);
+	burbuja(nombre, tel, n);
+	mostrar(nombre, tel, n);
+}
+
+void cargar(string nombre[], int tel[], int n) {
+	for (int i = 0; i < n; i++) {
+		cout << "Ingrese su nombre: " << endl;
+		cin.ignore();
+		getline(cin, nombre[i]);
+
+		cout << "Ingrese su numero telefonico " << nombre[i] << ": ";
+		cin >> tel[i];
+	}
+}
+
+void mostrar(string nombre[], int tel[], int n) {
+	cout << "Nombres y Apellidos\t" << "Telefono" << endl;
+	for (int i = 0; i < n; i++) {
+		cout << nombre[i] << "\t" << tel[i] << endl;
+	}
+}
+
+void burbuja(string nombre[],int tel[], int n) {
+	for(int i = 0 ; i < n - 1 ; i++)
+		for (int j = i + 1; j < n; j++) {
+			if (nombre[j] < nombre[i]) {
+				string auxnombre = nombre[i];
+				nombre[i] = nombre[j];
+				nombre[j] = auxnombre;
+
+				int auxtel = tel[i];
+				tel[i] = tel[j];
+				tel[j] = auxtel;
+
+			}
+		}
+
+}
